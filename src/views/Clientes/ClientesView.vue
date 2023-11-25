@@ -8,16 +8,17 @@ export default {
         },
     },
     mounted() {
-        this.$store.dispatch("fetchClientes");
+        const pag = this.$route.params.pag || 1;
+        console.log(pag);
+        this.$store.dispatch("fetchClientes", pag);
     },
     methods: {
         verDetalle(id) {
-            router.replace(`/clientes/${id}`);
+            router.replace(`/clientes/id/${id}`);
         },
         eliminar(id) {
             this.$store.dispatch("deleteCliente", id);
         },
-
     },
 }
 
@@ -52,6 +53,7 @@ export default {
                     </tr>
                 </tbody>
             </table>
+
         </div>
         <div v-else>
             <p>No hay clientes</p>

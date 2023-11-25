@@ -1,8 +1,8 @@
 import { api } from "@/api/Api";
 
-export async function fetchClientes({ commit }) {
+export async function fetchClientes({ commit }, pag) {
   try {
-    const { data } = await api.get("/clientes/pages/1");
+    const { data } = await api.get(`/clientes/pages/${pag}`);
     commit("setClientes", data.clientes);
   } catch (error) {
     console.error("Error fetching clientes:", error);
@@ -33,6 +33,7 @@ export async function createCliente({ commit }, cliente) {
   }
 }
 
+/** Para crear un Detalle */
 export async function createClienteDetalle(detalle) {
   try {
     console.log(detalle);
@@ -53,7 +54,7 @@ export async function updateCliente({ commit }, cliente) {
 
 export async function deleteCliente({ commit }, id) {
   try {
-    await api.delete(`/clientes/${id}`);
+    await api.delete(`/clientes/id/${id}`);
     commit("removeCliente", id);
   } catch (error) {
     console.error("Error deleting cliente:", error);
