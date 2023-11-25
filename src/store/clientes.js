@@ -22,9 +22,10 @@ export async function fetchCliente({ commit }, id) {
 export async function createCliente({ commit }, cliente) {
   try {
     const { data } = await api.post("/clientes", cliente);
-    if(cliente.detalle) {
-      cliente.detalle.clienteId = data.id;
-      createClienteDetalle(cliente.detalle);
+    console.log(data);
+    if (cliente.clienteDetalle) {
+      cliente.clienteDetalle.clienteId = data.id;
+      createClienteDetalle(cliente.clienteDetalle);
     }
     commit("addCliente", data);
   } catch (error) {
@@ -34,6 +35,7 @@ export async function createCliente({ commit }, cliente) {
 
 export async function createClienteDetalle(detalle) {
   try {
+    console.log(detalle);
     await api.post("/clientes-detalles", detalle);
   } catch (error) {
     console.error("Error creating cliente:", error);
@@ -57,4 +59,3 @@ export async function deleteCliente({ commit }, id) {
     console.error("Error deleting cliente:", error);
   }
 }
-
