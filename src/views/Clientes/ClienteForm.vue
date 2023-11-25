@@ -11,7 +11,7 @@ export default {
             telefono: "",
             direccion: "",
             email: "",
-            formIncompleto:false,
+            formIncompleto: false,
         };
     },
     methods: {
@@ -44,15 +44,21 @@ export default {
                 <h1>Crear Cliente</h1>
                 <div class="form-group">
                     <label for="nombre">Nombre*</label>
-                    <input v-model="nombre" type="text" :class="{ 'form-control': true, 'is-invalid': nombre === '' && formIncompleto }" id="nombre" placeholder="Nombre" required>
+                    <input v-model="nombre" type="text"
+                        :class="{ 'form-control': true, 'is-invalid': nombre === '' && formIncompleto }" id="nombre"
+                        placeholder="Nombre" required>
                 </div>
                 <div class="form-group">
                     <label for="ruc">Ruc*</label>
-                    <input v-model="ruc" type="text" :class="{ 'form-control': true, 'is-invalid': ruc === '' && formIncompleto }"  id="ruc" placeholder="Ruc" required>
+                    <input v-model="ruc" type="text"
+                        :class="{ 'form-control': true, 'is-invalid': ruc === '' && formIncompleto }" id="ruc"
+                        placeholder="Ruc" required>
                 </div>
                 <div class="form-group">
                     <label for="cedula">Cedula*</label>
-                    <input v-model="cedula" type="text" :class="{ 'form-control': true, 'is-invalid': cedula === '' && formIncompleto }"  id="cedula" placeholder="Cedula" required>
+                    <input v-model="cedula" type="text"
+                        :class="{ 'form-control': true, 'is-invalid': cedula === '' && formIncompleto }" id="cedula"
+                        placeholder="Cedula" required>
                 </div>
             </div>
             <div class="p-5 bg-light rounded col-6">
