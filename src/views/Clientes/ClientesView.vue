@@ -12,7 +12,7 @@ export default {
     },
     methods: {
         verDetalle(id) {
-            router.replace(`/cliente/${id}`);
+            router.replace(`/clientes/${id}`);
         },
         eliminar(id) {
             this.$store.dispatch("deleteCliente", id);
