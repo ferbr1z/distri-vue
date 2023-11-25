@@ -28,7 +28,8 @@ export default {
         <h1>Clientes</h1>
 
         <div v-if="getClientes.length">
-            <router-link to="/clientes/crear"><button class="btn btn-outline-success">Crear nuevo Cliente</button></router-link>
+            <router-link to="/clientes/crear"><button class="btn btn-outline-success">Crear nuevo
+                    Cliente</button></router-link>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -45,6 +46,7 @@ export default {
                         <td>{{ cliente.cedula }}</td>
                         <td>
                             <button @click="verDetalle(cliente.id)" class="btn btn-info">Ver más</button>
+                            <span class="text-secondary m-1"></span>
                             <button @click="eliminar(cliente.id)" class="btn btn-outline-danger">Eliminar</button>
                         </td>
                     </tr>
