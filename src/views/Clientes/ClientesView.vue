@@ -13,7 +13,11 @@ export default {
     methods: {
         verDetalle(id) {
             router.replace(`/cliente/${id}`);
-        }
+        },
+        eliminar(id) {
+            this.$store.dispatch("deleteCliente", id);
+        },
+
     },
 }
 
@@ -22,9 +26,9 @@ export default {
 <template>
     <div>
         <h1>Clientes</h1>
-        {{ console.log(getClientes) }}
 
         <div v-if="getClientes.length">
+            <router-link to="/clientes/crear"><button class="btn btn-outline-success">Crear nuevo Cliente</button></router-link>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -41,7 +45,7 @@ export default {
                         <td>{{ cliente.cedula }}</td>
                         <td>
                             <button @click="verDetalle(cliente.id)" class="btn btn-info">Ver más</button>
-                            <button @click="deleteCliente(cliente.id)" class="btn btn-outline-danger">Eliminar</button>
+                            <button @click="eliminar(cliente.id)" class="btn btn-outline-danger">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>

@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { fetchCliente, fetchClientes } from './clientes'
+import { fetchCliente, fetchClientes, createCliente, deleteCliente } from './clientes'
 export default createStore({
   state: {
     clientes: [],
@@ -10,11 +10,17 @@ export default createStore({
   },
   actions: {
     fetchClientes,
-    fetchCliente
+    fetchCliente,
+    deleteCliente,
+    createCliente
   },
   mutations: {
     setClientes: (state, clientes) => (state.clientes = clientes),
     setCliente: (state, cliente) => (state.cliente = cliente),
+    addCliente: (state, cliente) => state.clientes.push(cliente),
+    removeCliente: (state, id) => {
+      state.clientes = state.clientes.filter((cliente) => cliente.id !== id);
+    },
   },
   modules: {
   }

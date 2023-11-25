@@ -6,9 +6,14 @@ const routes = [
     component: () => import("../views/Clientes/ClientesView.vue")
   },
   {
-    path: '/cliente/:id',
+    path: '/clientes/:id',
     name: 'cliente',
     component: () => import("../views/Clientes/ClienteView.vue")
+  },
+  {
+    path: '/clientes/crear',
+    name: 'crearCliente',
+    component: () => import("../views/Clientes/ClienteForm.vue")
   }
 ]
 
