@@ -21,9 +21,9 @@ const routes = [
     component: () => import("../views/Clientes/ClienteView.vue"),
   },
   {
-    path: '/clientes/crear',
-    name: 'crearCliente',
-    component: () => import("../views/Clientes/ClienteForm.vue")
+    path: "/clientes/crear",
+    name: "crearCliente",
+    component: () => import("../views/Clientes/ClienteForm.vue"),
   },
   {
     path: "/proveedores/:pag?",
@@ -36,11 +36,16 @@ const routes = [
     component: () => import("../views/Proveedores/ProveedorView.vue"),
   },
   {
-    path: '/proveedor/crear',
-    name: 'crearProveedor',
-    component: () => import("../views/Proveedores/ProveedorForm.vue")
+    path: "/proveedor/crear",
+    name: "crearProveedor",
+    component: () => import("../views/Proveedores/ProveedorForm.vue"),
   },
-]
+  {
+    path: "/compras/page/:id",
+    name: "compras",
+    component: () => import("../views/FacturasCompra/ComprasList.vue"),
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

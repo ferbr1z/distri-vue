@@ -1,18 +1,8 @@
 import { createStore } from "vuex";
-import { api } from "@/api/Api";
-import {
-  fetchCliente,
-  fetchClientes,
-  createCliente,
-  deleteCliente,
-} from "./clientes";
+import { api, apiCompras } from "@/api/Api";
+import { fetchCliente, fetchClientes, createCliente, deleteCliente } from "./clientes";
 
-import {
-  fetchProveedor,
-  fetchProveedores,
-  createProveedor,
-  deleteProveedor,
-} from "./proveedores";
+import { fetchProveedor, fetchProveedores, createProveedor, deleteProveedor } from "./proveedores";
 import { login } from "./api";
 
 export default createStore({
@@ -42,6 +32,7 @@ export default createStore({
   mutations: {
     setToken: (state, token) => {
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      apiCompras.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     },
     setClientes: (state, clientes) => (state.clientes = clientes),
     setCliente: (state, cliente) => (state.cliente = cliente),
@@ -53,9 +44,7 @@ export default createStore({
     setProveedor: (state, proveedor) => (state.proveedor = proveedor),
     addProveedor: (state, proveedor) => state.proveedores.push(proveedor),
     removeProveedor: (state, id) => {
-      state.proveedores = state.proveedores.filter(
-        (proveedor) => proveedor.id !== id
-      );
+      state.proveedores = state.proveedores.filter((proveedor) => proveedor.id !== id);
     },
   },
   modules: {},
