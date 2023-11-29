@@ -6,8 +6,9 @@ const routes = [
   },
   {
     path: "/auth/login",
-    name: "Login",
+    name: "login",
     component: () => import("../views/Login/Login.vue"),
+    alias: "/",
   },
   {
     path: "/clientes/:pag?",
