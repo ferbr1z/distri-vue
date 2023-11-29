@@ -45,6 +45,11 @@ const routes = [
     name: "compras",
     component: () => import("../views/FacturasCompra/ComprasList.vue"),
   },
+  {
+    path: "/registrar/compra",
+    name: "registrarCompra",
+    component: () => import("../views/FacturasCompra/RegistrarCompra.vue"),
+  },
 ];
 
 const router = createRouter({

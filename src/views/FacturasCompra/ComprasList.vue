@@ -17,8 +17,8 @@
                     <td>{{ factura.fechaCompra }}</td>
                     <td>{{ factura.total }}</td>
                     <td>
-                        <button class="btn btn-primary" @click="verDetalles(factura)">Detalles</button>
-                        <button class="btn btn-danger mx-2">Eliminar</button>
+                        <button class="btn btn-primary" @click="verDetalles(factura)"><i class="bi bi-eye"></i></button>
+                        <button class="btn btn-danger mx-2" @click="borrarCompra(factura.id)"><i class="bi bi-trash"></i></button>
                     </td>
                 </tr>
             </tbody>
@@ -94,8 +94,7 @@ export default {
         this.getData(this.currentPage);
     },
     methods: {
-        getData(page=0) {
-
+        getData(page) {
             apiCompras.get(`/api/compras/page/${page}`)
                 .then(response => {
                     this.facturas = response.data;
@@ -115,8 +114,15 @@ export default {
                 this.currentPage = newPage;
             }
         },
-        borrarCompra(id){
-            console.log("compra borrada",id)
+        borrarCompra(facturaId){
+            apiCompras.delete(`/api/compras/${facturaId}`)
+                .then(response =>{
+                    const res = response.data;
+                    console.log(res);
+                    // Recargar la lista de facturas después de la eliminación
+                    this.getData(this.currentPage);
+                })
+            console.log("compra borrada", facturaId)
         },
     },
 };
