@@ -33,7 +33,7 @@ const routes = [
     path: '/proveedor/crear',
     name: 'crearProveedor',
     component: () => import("../views/Proveedores/ProveedorForm.vue")
-  }
+  },
 ]
 
 const router = createRouter({
