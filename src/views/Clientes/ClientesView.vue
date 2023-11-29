@@ -27,10 +27,9 @@ export default {
 <template>
     <div>
         <h1>Clientes</h1>
-
+        <router-link to="/clientes/crear"><button class="btn btn-outline-success">Crear nuevo
+                Cliente</button></router-link>
         <div v-if="getClientes.length">
-            <router-link to="/clientes/crear"><button class="btn btn-outline-success">Crear nuevo
-                    Cliente</button></router-link>
             <table class="table table-striped">
                 <thead>
                     <tr>

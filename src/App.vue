@@ -7,6 +7,7 @@
       <div class="nav-item m-3"> <router-link class="nav-link" to="/">Home</router-link> </div>
       <div class="nav-item m-3"> <router-link class="nav-link" to="/about">About</router-link></div>
       <div class="nav-item m-3"> <router-link class="nav-link" to="/clientes">Clientes</router-link> </div>
+      <div class="nav-item m-3"> <router-link class="nav-link" to="/proveedores">Proveedores</router-link> </div>
       <div class="nav-item m-3"> <router-link class="nav-link" to="/productos">Productos</router-link> </div>
       <div class="nav-item"> <router-link class="nav-link" to="/facturas">Facturas</router-link></div>
     </nav>
