@@ -1,24 +1,24 @@
 <script>
 import { mapState } from "vuex";
 export default {
-    name: "ClienteView",
+    name: "ProveedorView",
     computed: {
-        ...mapState(["cliente"]),
+        ...mapState(["proveedor"]),
         getCliente() {
             return this.$store.getters.getCliente;
         },
     },
     mounted() {
         const clientId = this.$route.params.id;
-        this.$store.dispatch("fetchCliente", clientId);
+        this.$store.dispatch("fetchProveedor", clientId);
     }
 }
 </script>
 
 <template>
-    <div v-if="cliente" class="row p-3">
+    <div v-if="proveedor" class="row p-3">
         <div class="col">
-            <h1>Cliente</h1>
+            <h1>Proveedor</h1>
 
             <ul class="list-group list-group-flush ">
                 <li class="list-group-item"><b>Nombre:</b> {{ cliente.nombre }}</li>

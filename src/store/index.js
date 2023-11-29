@@ -1,19 +1,9 @@
 import { createStore } from "vuex";
-import { api } from "@/api/Api";
+import { api, apiCompras } from "@/api/Api";
 import { apiStock } from "@/api/Api";
-import {
-  fetchCliente,
-  fetchClientes,
-  createCliente,
-  deleteCliente,
-} from "./clientes";
+import { fetchCliente, fetchClientes, createCliente, deleteCliente } from "./clientes";
 
-import {
-  fetchProveedor,
-  fetchProveedores,
-  createProveedor,
-  deleteProveedor,
-} from "./proveedores";
+import { fetchProveedor, fetchProveedores, createProveedor, deleteProveedor } from "./proveedores";
 import { login } from "./api";
 import{
   fetchAutor,
@@ -88,7 +78,7 @@ export default createStore({
     setToken: (state, token) => {
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       apiStock.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      
+      apiCompras.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     },
     setClientes: (state, clientes) => (state.clientes = clientes),
     setCliente: (state, cliente) => (state.cliente = cliente),
@@ -100,9 +90,7 @@ export default createStore({
     setProveedor: (state, proveedor) => (state.proveedor = proveedor),
     addProveedor: (state, proveedor) => state.proveedores.push(proveedor),
     removeProveedor: (state, id) => {
-      state.proveedores = state.proveedores.filter(
-        (proveedor) => proveedor.id !== id
-      );
+      state.proveedores = state.proveedores.filter((proveedor) => proveedor.id !== id);
     },
     setAutores: (state, autores) => (state.autores = autores),
     setAutor: (state, autor) => (state.autor = autor),
@@ -113,8 +101,7 @@ export default createStore({
       } else {
         console.error('state.autores is not an array');
       }
-    }
-    ,
+    },
     setGeneros: (state, generos) => (state.generos = generos),
     setGenero: (state, genero) => (state.genero = genero),
     addGenero: (state, genero) => state.generos.push(genero),
@@ -129,4 +116,4 @@ export default createStore({
     },
   },
   modules: {},
-});
+  });

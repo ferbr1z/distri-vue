@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const api = axios.create({
   baseURL: "http://localhost:5000",
   headers: {
@@ -11,6 +10,15 @@ export const api = axios.create({
 
 export const apiStock= axios.create({
   baseURL: "http://localhost:9090",
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+  },
+});
+
+
+export const apiCompras = axios.create({
+  baseURL: "http://localhost:8090",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
