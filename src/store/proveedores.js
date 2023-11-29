@@ -4,7 +4,7 @@ export async function fetchProveedores({ commit }, pag) {
   try {
     const { data } = await api.get(`/proveedores/pages/${pag}`);
     console.log(data);
-    commit("setproveedores", data.proveedores);
+    commit("setProveedores", data.proveedores);
   } catch (error) {
     console.error("Error fetching proveedores:", error);
   }
