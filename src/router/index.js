@@ -40,6 +40,36 @@ const routes = [
     name: 'crearProveedor',
     component: () => import("../views/Proveedores/ProveedorForm.vue")
   },
+  {
+    path: '/autores',
+    name: 'autores',
+    component: () => import("../views/Autores/AutoresView.vue")
+  },
+  {
+    path: '/autores/:id',
+    name: 'autor',
+    component: () => import("../views/Autores/AutorView.vue")
+  },
+  {
+    path:'/autores/crear',
+    name:'crearAutor',
+    component: ()=>import ("../views/Autores/AutorForm.vue")
+  },
+  {
+    path: '/generos',
+    name: 'generos',
+    component: () => import("../views/Generos/GenerosView.vue")
+  },
+  {
+    path: '/generos/:id',
+    name: 'genero',
+    component: () => import("../views/Generos/GeneroView.vue")
+  },
+  {
+    path:'/generos/crear',
+    name:'crearGenero',
+    component: ()=>import ("../views/Generos/GeneroForm.vue")
+  },
 ]
 
 const router = createRouter({
