@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import { api } from "@/api/Api";
 import {
   fetchCliente,
   fetchClientes,
@@ -12,6 +13,7 @@ import {
   createProveedor,
   deleteProveedor,
 } from "./proveedores";
+import { login } from "./api";
 
 export default createStore({
   state: {
@@ -19,10 +21,12 @@ export default createStore({
     cliente: null,
     proveedores: [],
     proveedor: null,
+    token: sessionStorage.getItem("token") || "",
   },
   getters: {
     getClientes: (state) => state.clientes,
     getProveedores: (state) => state.proveedores,
+    getToken: (state) => state.token,
   },
   actions: {
     fetchClientes,
@@ -33,8 +37,12 @@ export default createStore({
     fetchProveedores,
     createProveedor,
     deleteProveedor,
+    login,
   },
   mutations: {
+    setToken: (state, token) => {
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    },
     setClientes: (state, clientes) => (state.clientes = clientes),
     setCliente: (state, cliente) => (state.cliente = cliente),
     addCliente: (state, cliente) => state.clientes.push(cliente),

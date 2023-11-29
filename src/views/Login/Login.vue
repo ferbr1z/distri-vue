@@ -38,7 +38,7 @@ export default {
     methods: {
        async login() {
             try {
-                const response = await axios.post('http://localhost:8080/api/auth/login', {
+                const response = await axios.post('http://localhost:5000/auth/login', {
                     email: this.email,
                     password: this.password,
                 });
@@ -49,9 +49,11 @@ export default {
                 // Guarda el token en el sessionStorage
                 sessionStorage.setItem('token', response.data.token);
 
+                this.$store.dispatch("login", response.data.token);
+
                 // Limpia los campos de los inputs después del inicio de sesión
                 this.email = '';
-               this.password = '';
+                this.password = '';
 
             } catch (error) {
                 // Maneja los errores de la solicitud

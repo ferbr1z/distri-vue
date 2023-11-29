@@ -1,4 +1,6 @@
 <script setup>
+
+
 </script>
 
 <template>
@@ -16,3 +18,13 @@
     <RouterView />
   </div>
 </template>
+
+<script>
+export default {
+  name:"App",
+  mounted() {
+    const token = this.$store.state.token;
+    this.$store.dispatch("login", token);
+  }
+}
+</script>
