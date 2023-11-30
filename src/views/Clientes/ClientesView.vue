@@ -14,7 +14,7 @@ export default {
             return this.$store.getters.getClientes;
         },
         totalPages() {
-            return this.getAutores ? this.getAutores.totalPages : 0;
+            return this.getClientes ? this.getClientes.totalPages : 0;
         }
     },
     mounted() {
@@ -25,19 +25,22 @@ export default {
         verDetalle(id) {
             router.replace(`/clientes/id/${id}`);
         },
-        eliminar(id) {
-            this.$store.dispatch("deleteCliente", id);
+        async  eliminar(id) {
+            if (confirm("¿Estás seguro de que quieres eliminar este cliente?")) {
+                await this.$store.dispatch("deleteCliente", id);
+                await this.$store.dispatch("fetchClientes", this.currentPage);
+            }
         },
         async search() {
             if (this.searchQuery.trim() === "") {
                 await this.$store.dispatch("fetchClientes", this.currentPage);
                 return;
             }
-            const pag = this.currentPage ;
+            const pag = this.currentPage;
             switch (this.searchOpt) {
 
                 case 'nombre':
-                    await this.$store.dispatch("searchClientesByNombre", { query: this.searchQuery,  pag });
+                    await this.$store.dispatch("searchClientesByNombre", { query: this.searchQuery, pag });
 
                     break;
                 case 'ruc':
@@ -49,7 +52,7 @@ export default {
         changePage(page) {
             if (page >= 1 && page <= this.totalPages) {
                 this.currentPage = page;
-                this.searchAutores();
+                this.search();
             }
         },
     },
@@ -113,7 +116,7 @@ export default {
                     </li>
                     <li class="page-item" v-for="page in totalPages" :key="page" :class="{ active: page === currentPage }">
                         <button class="page-link" @click="changePage(page)">{{ page }}</button>
-                    </li>
+                    </li>{{ console.log(totalPages) }}
                     <li class="page-item" :class="{ disabled: currentPage === totalPages }">
                         <button class="page-link" @click="changePage(currentPage + 1)"
                             :disabled="currentPage === totalPages">Siguiente</button>

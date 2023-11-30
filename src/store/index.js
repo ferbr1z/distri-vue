@@ -92,7 +92,7 @@ export default createStore({
     },
     setProveedores: (state, proveedores) => (state.proveedores = proveedores),
     setProveedor: (state, proveedor) => (state.proveedor = proveedor),
-    addProveedor: (state, proveedor) => state.proveedores.push(proveedor),
+    addProveedor: (state, proveedor) => state.proveedores.proveedores.push(proveedor),
     removeProveedor: (state, id) => {
       state.proveedores = state.proveedores.filter((proveedor) => proveedor.id !== id);
     },

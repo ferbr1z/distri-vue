@@ -17,7 +17,7 @@ export default {
     methods: {
         crearCliente() {
             if (!validarCampos([this.nombre, this.ruc, this.cedula])) {
-                alert("Todos los campos son obligatorios");
+                alert("Todos los campos con * son obligatorios");
                 this.formIncompleto = true;
                 return;
             }

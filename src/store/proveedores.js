@@ -57,7 +57,7 @@ export async function updateProveedor({ commit }, proveedor) {
 
 export async function deleteProveedor({ commit }, id) {
   try {
-    await api.delete(`/proveedores/id/${id}`);
+    await api.delete(`/proveedores/${id}`);
     commit("removeProveedor", id);
   } catch (error) {
     console.error("Error deleting proveedor:", error);

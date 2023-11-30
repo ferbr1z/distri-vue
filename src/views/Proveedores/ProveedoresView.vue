@@ -13,6 +13,9 @@ export default {
         getProveedores() {
             return this.$store.getters.getProveedores;
         },
+        totalPages() {
+            return this.getProveedores ? this.getProveedores.totalPages : 0;
+        }
     },
     mounted() {
         const pag = this.$route.params.pag || 1;
@@ -41,6 +44,12 @@ export default {
                     await this.$store.dispatch("searchProveedoresByRuc", { query: this.searchQuery, pag });
 
                     break;
+            }
+        },
+        changePage(page) {
+            if (page >= 1 && page <= this.totalPages) {
+                this.currentPage = page;
+                this.search();
             }
         },
     },

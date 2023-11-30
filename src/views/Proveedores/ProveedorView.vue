@@ -5,12 +5,12 @@ export default {
     computed: {
         ...mapState(["proveedor"]),
         getCliente() {
-            return this.$store.getters.getCliente;
+            return this.$store.getters.getProveedor;
         },
     },
     mounted() {
-        const clientId = this.$route.params.id;
-        this.$store.dispatch("fetchProveedor", clientId);
+        const proveedorId = this.$route.params.id;
+        this.$store.dispatch("fetchProveedor", proveedorId);
     }
 }
 </script>
@@ -21,9 +21,9 @@ export default {
             <h1>Proveedor</h1>
 
             <ul class="list-group list-group-flush ">
-                <li class="list-group-item"><b>Nombre:</b> {{ cliente.nombre }}</li>
-                <li class="list-group-item"><b>Ruc:</b> {{ cliente.ruc }}</li>
-                <li class="list-group-item"><b>Cedula:</b> {{ cliente.cedula }}</li>
+                <li class="list-group-item"><b>Nombre:</b> {{ proveedor.nombre }}</li>
+                <li class="list-group-item"><b>Ruc:</b> {{ proveedor.ruc }}</li>
+                <li class="list-group-item"><b>Cedula:</b> {{ proveedor.cedula }}</li>
             </ul>
 
         </div>
@@ -31,10 +31,10 @@ export default {
         <div class="col">
             <h2>Detalle</h2>
 
-            <ul class="list-group list-group-flush" v-if="cliente.clienteDetalle" :key="cliente.clienteDetalle.id">
-                <li class="list-group-item"><b>Telefono:</b> {{ cliente.clienteDetalle.telefono }}</li>
-                <li class="list-group-item"><b>Direccion:</b> {{ cliente.clienteDetalle.direccion }}</li>
-                <li class="list-group-item"><b>Correo:</b> {{ cliente.clienteDetalle.email }}</li>
+            <ul class="list-group list-group-flush" v-if="proveedor.proveedorDetalle" :key="proveedor.proveedorDetalle.id">
+                <li class="list-group-item"><b>Telefono:</b> {{ proveedor.proveedorDetalle.telefono }}</li>
+                <li class="list-group-item"><b>Direccion:</b> {{ proveedor.proveedorDetalle.direccion }}</li>
+                <li class="list-group-item"><b>Correo:</b> {{ proveedor.proveedorDetalle.email }}</li>
             </ul>
         </div>
 
@@ -42,7 +42,7 @@ export default {
 
     <div v-else>
         <center>
-            <h1 class="text-secondary">Este cliente no existe o ha sido eliminado</h1>
+            <h1 class="text-secondary">Este proveedor no existe o ha sido eliminado</h1>
         </center>
     </div>
 </template>

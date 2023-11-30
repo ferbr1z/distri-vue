@@ -60,7 +60,7 @@ export async function updateCliente({ commit }, cliente) {
 
 export async function deleteCliente({ commit }, id) {
   try {
-    await api.delete(`/clientes/id/${id}`);
+    await api.delete(`/clientes/${id}`);
     commit("removeCliente", id);
   } catch (error) {
     console.error("Error deleting cliente:", error);

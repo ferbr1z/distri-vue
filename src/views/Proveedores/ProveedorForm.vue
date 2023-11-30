@@ -7,7 +7,6 @@ export default {
         return {
             nombre: "",
             ruc: "",
-            cedula: "",
             telefono: "",
             direccion: "",
             email: "",
@@ -15,23 +14,23 @@ export default {
         };
     },
     methods: {
-        crearCliente() {
-            if (!validarCampos([this.nombre, this.ruc, this.cedula])) {
-                alert("Todos los campos son obligatorios");
+        crearProveedor() {
+            if (!validarCampos([this.nombre, this.ruc])) {
+                alert("Todos los campos con * son obligatorios");
                 this.formIncompleto = true;
                 return;
             }
-            const cliente = {
+            const proveedor = {
                 nombre: this.nombre,
                 ruc: this.ruc,
                 cedula: this.cedula,
-                clienteDetalle: {
+                proveedorDetalle: {
                     telefono: this.telefono,
                     direccion: this.direccion,
                     email: this.email,
                 },
             };
-            this.$store.dispatch("createCliente", cliente);
+            this.$store.dispatch("createProveedor", proveedor);
         },
     },
 };
@@ -39,9 +38,9 @@ export default {
 
 <template>
     <div>
-        <form @submit.prevent="crearCliente" class="row">
+        <form @submit.prevent="crearProveedor" class="row">
             <div class="p-5 col-6">
-                <h1>Crear Cliente</h1>
+                <h1>Crear Proveedor</h1>
                 <div class="form-group">
                     <label for="nombre">Nombre*</label>
                     <input v-model="nombre" type="text"
@@ -53,12 +52,6 @@ export default {
                     <input v-model="ruc" type="text"
                         :class="{ 'form-control': true, 'is-invalid': ruc === '' && formIncompleto }" id="ruc"
                         placeholder="Ruc" required>
-                </div>
-                <div class="form-group">
-                    <label for="cedula">Cedula*</label>
-                    <input v-model="cedula" type="text"
-                        :class="{ 'form-control': true, 'is-invalid': cedula === '' && formIncompleto }" id="cedula"
-                        placeholder="Cedula" required>
                 </div>
             </div>
             <div class="p-5 bg-light rounded col-6">
@@ -77,6 +70,6 @@ export default {
                 </div>
             </div>
         </form>
-        <button type="submit" class="btn btn-primary mt-2" @click="crearCliente"> Guardar </button>
+        <button type="submit" class="btn btn-primary mt-2" @click="crearProveedor"> Guardar </button>
     </div>
 </template>
