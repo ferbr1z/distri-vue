@@ -3,7 +3,7 @@ import { api } from "@/api/Api";
 export async function fetchClientes({ commit }, pag) {
   try {
     const { data } = await api.get(`/clientes/pages/${pag}`);
-    commit("setClientes", data.clientes);
+    commit("setClientes", data);
   } catch (error) {
     console.error("Error fetching clientes:", error);
   }
@@ -58,5 +58,23 @@ export async function deleteCliente({ commit }, id) {
     commit("removeCliente", id);
   } catch (error) {
     console.error("Error deleting cliente:", error);
+  }
+}
+
+export async function searchClientesByNombre({ commit }, {query,pag}) {
+  try {
+    const { data } = await api.get(`/clientes/nombre/${query}/pages/${pag}`);
+    commit("setClientes", data);
+  } catch (error) {
+    console.error("Error fetching clientes:", error);
+  }
+}
+
+export async function searchClientesByRuc({ commit }, {query,pag}) {
+  try {
+    const { data } = await api.get(`/clientes/ruc/${query}/pages/${pag}`);
+    commit("setClientes", data);
+  } catch (error) {
+    console.error("Error fetching clientes:", error);
   }
 }

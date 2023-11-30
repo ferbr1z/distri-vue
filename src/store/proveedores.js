@@ -4,7 +4,7 @@ export async function fetchProveedores({ commit }, pag) {
   try {
     const { data } = await api.get(`/proveedores/pages/${pag}`);
     console.log(data);
-    commit("setProveedores", data.proveedores);
+    commit("setProveedores", data);
   } catch (error) {
     console.error("Error fetching proveedores:", error);
   }
@@ -59,5 +59,23 @@ export async function deleteProveedor({ commit }, id) {
     commit("removeProveedor", id);
   } catch (error) {
     console.error("Error deleting proveedor:", error);
+  }
+}
+
+export async function searchProveedoresByNombre({ commit }, {query,pag}) {
+  try {
+    const { data } = await api.get(`/proveedores/nombre/${query}/pages/${pag}`);
+    commit("setProveedores", data);
+  } catch (error) {
+    console.error("Error fetching proveedores:", error);
+  }
+}
+
+export async function searchProveedoresByRuc({ commit }, {query,pag}) {
+  try {
+    const { data } = await api.get(`/proveedores/ruc/${query}/pages/${pag}`);
+    commit("setProveedores", data);
+  } catch (error) {
+    console.error("Error fetching proveedores:", error);
   }
 }

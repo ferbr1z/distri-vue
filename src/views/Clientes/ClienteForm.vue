@@ -1,6 +1,6 @@
 <script>
+import router from "@/router";
 import { validarCampos } from "@/utils/ValidarCampos";
-
 export default {
     name: "ClienteForm",
     data() {
@@ -32,6 +32,8 @@ export default {
                 },
             };
             this.$store.dispatch("createCliente", cliente);
+            router.replace("/clientes")
+
         },
     },
 };

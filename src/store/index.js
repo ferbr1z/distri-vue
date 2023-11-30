@@ -1,9 +1,9 @@
 import { createStore } from "vuex";
 import { api, apiCompras } from "@/api/Api";
 import { apiStock } from "@/api/Api";
-import { fetchCliente, fetchClientes, createCliente, deleteCliente } from "./clientes";
+import { fetchCliente, fetchClientes, createCliente, deleteCliente, searchClientesByNombre, searchClientesByRuc } from "./clientes";
 
-import { fetchProveedor, fetchProveedores, createProveedor, deleteProveedor } from "./proveedores";
+import { fetchProveedor, fetchProveedores, createProveedor, deleteProveedor, searchProveedoresByNombre, searchProveedoresByRuc } from "./proveedores";
 import { login } from "./api";
 import{
   fetchAutor,
@@ -54,10 +54,14 @@ export default createStore({
     fetchCliente,
     deleteCliente,
     createCliente,
+    searchClientesByNombre,
+    searchClientesByRuc,
     fetchProveedor,
     fetchProveedores,
     createProveedor,
     deleteProveedor,
+    searchProveedoresByNombre,
+    searchProveedoresByRuc,
     login,
     fetchAutores,
     fetchAutor,
@@ -82,7 +86,7 @@ export default createStore({
     },
     setClientes: (state, clientes) => (state.clientes = clientes),
     setCliente: (state, cliente) => (state.cliente = cliente),
-    addCliente: (state, cliente) => state.clientes.push(cliente),
+    addCliente: (state, cliente) => state.clientes.clientes.push(cliente),
     removeCliente: (state, id) => {
       state.clientes = state.clientes.filter((cliente) => cliente.id !== id);
     },
