@@ -9,11 +9,17 @@ export async function fetchClientes({ commit }, pag) {
   }
 }
 
-export async function fetchCliente({ commit }, id) {
+export function fetchCliente({ commit }, id) {
   try {
-    const { data } = await api.get(`/clientes/${id}`);
-    console.log(data);
-    commit("setCliente", data);
+    api.get(`/clientes/${id}`)
+      .then(response => {
+        const data = response.data;
+        console.log(data);
+        commit("setCliente", data);
+      })
+      .catch(error => {
+        console.error("Error fetching cliente:", error);
+      });
   } catch (error) {
     console.error("Error fetching cliente:", error);
   }
